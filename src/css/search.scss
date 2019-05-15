@@ -4,7 +4,6 @@
   padding: 10px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
   display: flex;
-  
 
   &__input {
     color: #4C4C4C;
@@ -13,6 +12,10 @@
     padding: 10px;
     margin-right: 10px;
     flex-grow: 1;
+
+    &::placeholder {
+      color: #BABCC1;
+    }
   }
 
   &__btn {

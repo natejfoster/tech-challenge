@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #F7F8FA;
+  display: flex;
+  justify-content: center;
+}
+
+.results {
+  margin: 15px;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 75vw;
+}

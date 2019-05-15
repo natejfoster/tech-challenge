@@ -1,0 +1,24 @@
+.character {
+  background-color: #ffffff;
+  padding: 10px;
+  
+
+  &:not(:last-child) {
+    border-bottom: solid 1px #F7F8FA;
+  }
+  
+  
+  &__name {
+    color: #333333;
+  }
+
+  &__desc {
+    color: #999B9E;
+    font-size: 12px;
+
+    & span + span::before {
+      content: '\2219';
+    }
+  }
+}
+

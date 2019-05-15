@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Character from './components/character';
+import Search from './components/search';
 import './css/app.scss';
 
-const baseURL = 'https://swapi.co/api/people/';
+const baseURL = 'https://swapi.co/api/people/?search=';
 const test = {
   "name": "Luke Skywalker",
   "height": "172",
@@ -38,18 +39,21 @@ const test = {
 
 class App extends Component {
   state = {
-    data: {},
-    query: '',
+    characters: {},
+    query: 'Le',
     filter: ''
   }
 
-  componentDidMount() {
-    fetch(baseURL).then(res => res.json()).then(data => console.log(data));
+  getResults = () => {
+    fetch(baseURL + this.state.query)
+      .then(res => res.json())
+      .then(data => console.log(data.results));
   }
 
   render() { 
     return (
       <div className='App'>
+        <Search getResults={this.getResults}/>
         <div className='results'>
           <Character 
             key={1}

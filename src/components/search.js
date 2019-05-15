@@ -1,9 +1,11 @@
 import React from 'react';
+import '../css/search.scss';
 
-const Search = () => {
+const Search = ({getResults}) => {
   return (
-    <div>
-      Search Bar
+    <div className='search'>
+      <input className='search__input' type='text' placeholder='Search by character name'></input>
+      <button className='search__btn' onClick={getResults}>Search</button>
     </div>
   );
 }

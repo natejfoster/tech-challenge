@@ -43,8 +43,6 @@ class App extends Component {
     } else {
       this.setState({filteredCharacters: this.state.characters[filterString]})
     }
-    // set filteredCharacters based on filter
-
   }
 
   render() { 
@@ -54,8 +52,7 @@ class App extends Component {
       `Male (${characters.male.length})`,
       `Female (${characters.female.length})`,
       `None (${characters.none.length})`
-    ]
-    console.log(characters.male.length);
+    ];
 
     if (filteredCharacters.length === 0) {
       results = 

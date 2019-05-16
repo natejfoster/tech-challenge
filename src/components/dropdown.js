@@ -6,7 +6,6 @@ class Dropdown extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: props.options,
       isOpen: false,
       title: props.title,
       selected: ''
@@ -23,13 +22,13 @@ class Dropdown extends Component {
   }
 
   render() { 
-    const{isOpen, title, selected, options} = this.state;
+    const{isOpen, title, selected} = this.state;
 
     let toggleStyle = isOpen ? {display: 'block'} : {display: 'none'};
     let arrowStyle = isOpen ? {transform: 'rotate(180deg)'} : {};
     let curTitle = selected === '' ? title : selected;
 
-    let list = options.map((option, index) => 
+    let list = this.props.options.map((option, index) => 
       <h5 className='dropdown__item' key={index} onClick={() => this.select(option)}>
         {option}
       </h5>

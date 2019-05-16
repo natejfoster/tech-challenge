@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/tech-challenge/static/css/main.6d6d6fd9.chunk.css",
+    "main.css": "/tech-challenge/static/css/main.9b19c2bf.chunk.css",
     "main.js": "/tech-challenge/static/js/main.bd08b093.chunk.js",
     "main.js.map": "/tech-challenge/static/js/main.bd08b093.chunk.js.map",
     "runtime~main.js": "/tech-challenge/static/js/runtime~main.657c240c.js",
@@ -8,9 +8,9 @@
     "static/js/2.179f4c70.chunk.js": "/tech-challenge/static/js/2.179f4c70.chunk.js",
     "static/js/2.179f4c70.chunk.js.map": "/tech-challenge/static/js/2.179f4c70.chunk.js.map",
     "index.html": "/tech-challenge/index.html",
-    "precache-manifest.6546c567f69e720412421cfee22c90fd.js": "/tech-challenge/precache-manifest.6546c567f69e720412421cfee22c90fd.js",
+    "precache-manifest.352bc552db5cd701c8c949148fde6695.js": "/tech-challenge/precache-manifest.352bc552db5cd701c8c949148fde6695.js",
     "service-worker.js": "/tech-challenge/service-worker.js",
-    "static/css/main.6d6d6fd9.chunk.css.map": "/tech-challenge/static/css/main.6d6d6fd9.chunk.css.map",
+    "static/css/main.9b19c2bf.chunk.css.map": "/tech-challenge/static/css/main.9b19c2bf.chunk.css.map",
     "static/media/chevron--down.svg": "/tech-challenge/static/media/chevron--down.0ed616d7.svg",
     "static/media/vader-icon.svg": "/tech-challenge/static/media/vader-icon.1e934ee5.svg"
   }

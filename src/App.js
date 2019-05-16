@@ -9,7 +9,7 @@ const baseURL = 'https://swapi.co/api/people/?search=';
 class App extends Component {
   state = {
     characters: [],
-    query: 'Le',
+    query: '',
     filter: ''
   }
 
@@ -21,8 +21,8 @@ class App extends Component {
       });
   }
 
-  getQuery = () => {
-
+  getQuery = (event) => {
+    this.setState({query: event.target.value})
   }
 
   render() { 
@@ -50,7 +50,11 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <Search getResults={this.getResults} value={this.state.query}/>
+        <Search 
+          getResults={this.getResults}
+          value={this.state.query}
+          getQuery={this.getQuery.bind(this)}
+        />
         <div className='results'>
           {results}
         </div>

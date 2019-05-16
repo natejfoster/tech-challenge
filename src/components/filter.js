@@ -1,8 +1,20 @@
 import React from 'react';
+import Dropdown from './dropdown';
+import '../css/filter.scss'
 
-const Filter = () => {
+const Filter = ({numResults}) => {
+  const options = ['Male', 'Female', 'N/A']
+  
   return (
-    <div>Filter</div>
+    <div className='filter'>
+      <h5 className='filter__results'>{numResults} RESULTS</h5>
+      <div className="filter__selector">
+        <h5 className='filter__gender'>GENDER</h5>
+        <div className='filter__dropdown'>
+          <Dropdown title='Filter by gender' options={options} />
+        </div>
+      </div>
+    </div>
   );
 }
  

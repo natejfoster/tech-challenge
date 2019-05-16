@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Character from './components/character';
 import Search from './components/search';
+import Filter from './components/filter';
 import './css/app.scss';
 import vader from './assets/vader-icon.svg';
 
@@ -55,6 +56,7 @@ class App extends Component {
           value={this.state.query}
           getQuery={this.getQuery.bind(this)}
         />
+        <Filter numResults={this.state.characters.length}/>
         <div className='results'>
           {results}
         </div>

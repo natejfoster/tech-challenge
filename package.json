@@ -2,6 +2,7 @@
   "name": "challenge",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://natejfoster.github.io/tech-challenge/",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "node-sass": "^4.12.0",

@@ -19,6 +19,7 @@ class Dropdown extends Component {
 
   select = (selected) => {
     this.setState({isOpen: !this.state.isOpen, selected: selected});
+    this.props.filterResults(selected);
   }
 
   render() { 
@@ -41,7 +42,10 @@ class Dropdown extends Component {
           <img src={Chevron} className='dropdown__arrow' alt='dropdown arrow' style={arrowStyle}/>
         </div>
         <div className='dropdown__list' style={toggleStyle}>
-         {list}
+          {list}
+          <h5 className='dropdown__item' onClick={() => this.select('')}>
+            Clear Filter
+          </h5>
         </div>
       </div>
     );

@@ -26,6 +26,11 @@ class App extends Component {
     this.setState({query: event.target.value})
   }
 
+  filterResults = (filter) => {
+    console.log(filter);
+    this.setState({filter: filter})
+  }
+
   render() { 
     let results;
 
@@ -46,7 +51,7 @@ class App extends Component {
           eye_color={character.eye_color}
           hair_color={character.hair_color}
         />
-      )
+      );
     }
 
     return (
@@ -56,7 +61,7 @@ class App extends Component {
           value={this.state.query}
           getQuery={this.getQuery.bind(this)}
         />
-        <Filter numResults={this.state.characters.length}/>
+        <Filter numResults={this.state.characters.length} filterResults={this.filterResults.bind(this)}/>
         <div className='results'>
           {results}
         </div>

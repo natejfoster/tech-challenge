@@ -1,3 +1,5 @@
+// Reusable character component
+
 import React from 'react';
 import '../css/character.scss';
 

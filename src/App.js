@@ -5,6 +5,8 @@ import Filter from './components/filter';
 import './css/app.scss';
 import vader from './assets/vader-icon.svg';
 
+// Assumes that user will input a search string.
+// If no string provided, API returns 10 characters if search is clicked
 const baseURL = 'https://swapi.co/api/people/?search=';
 
 class App extends Component {
@@ -19,6 +21,8 @@ class App extends Component {
     filteredCharacters: []
   }
 
+  // API queried once the search button has been clicked.
+  // Creates filtered sets as part of this step to provide fast filtering.
   getResults = () => {
     fetch(baseURL + this.state.query)
       .then(res => res.json())
@@ -32,11 +36,15 @@ class App extends Component {
       });
   }
 
+  // store the query string in component state
   getQuery = (event) => {
     this.setState({query: event.target.value});
   }
 
+  // If a filter has been selected, this switches which character set is being rendered.
+  // If filters are cleared, the character set is reset to the list of all characters
   filterResults = (filter) => {
+    // modifying the string to avoid the need of a switch statement
     let filterString = filter.split(' ')[0].toLowerCase();
     if (filterString === '') {
       this.setState({filteredCharacters: this.state.characters.all})
@@ -46,14 +54,20 @@ class App extends Component {
   }
 
   render() { 
+    // destructuring for easier access
     const{characters, filteredCharacters} = this.state;
+    
+    // will be used to store conditional content for rendering
     let results;
+    
+    // options to be passed into the dropdown selector
     let options = [
       `Male (${characters.male.length})`,
       `Female (${characters.female.length})`,
       `None (${characters.none.length})`
     ];
 
+    // content to render for no results state
     if (filteredCharacters.length === 0) {
       results = 
         <div className='noResults'>
@@ -63,6 +77,7 @@ class App extends Component {
           </div>
         </div>
     } else {
+      // content to render for results present state
       results = filteredCharacters.map((character, index) => 
         <Character 
           key={index}
@@ -77,11 +92,13 @@ class App extends Component {
     return (
       <div className='App'>
         <Search 
-          getResults={this.getResults}
+          onClick={this.getResults}
           value={this.state.query}
-          getQuery={this.getQuery.bind(this)}
+          onChange={this.getQuery.bind(this)}
+          placeholder='Search by character name'
         />
         <Filter 
+          key={this.state.query /*trick to re-render the filter if the query is changed*/}
           numResults={this.state.filteredCharacters.length}
           options={options}
           filterResults={this.filterResults.bind(this)}

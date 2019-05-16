@@ -1,3 +1,5 @@
+// Custom reusable dropdown component. 
+
 import React, { Component } from 'react';
 import '../css/dropdown.scss'
 import Chevron from '../assets/chevron--down.svg';
@@ -7,29 +9,34 @@ class Dropdown extends Component {
     super(props);
     this.state = {
       isOpen: false,
-      title: props.title,
       selected: ''
     }
   }
 
+  // Switch state of isOpen. Used to set visibility of dropdown list.
   toggle = () => {
     this.setState({isOpen: !this.state.isOpen});
   }
 
-  select = (selected) => {
+  // When a selection is made, dropdown is closed.
+  // Selection is sent to the select method passed in from parent component.
+  makeSelection = (selected) => {
     this.setState({isOpen: !this.state.isOpen, selected: selected});
-    this.props.filterResults(selected);
+    this.props.select(selected);
   }
 
   render() { 
-    const{isOpen, title, selected} = this.state;
+    // destructuring for ease of access
+    const{isOpen, selected} = this.state;
 
+    // Conditional styles and title based on component state.
     let toggleStyle = isOpen ? {display: 'block'} : {display: 'none'};
     let arrowStyle = isOpen ? {transform: 'rotate(180deg)'} : {};
-    let curTitle = selected === '' ? title : selected;
+    let curTitle = selected === '' ? this.props.title : selected;
 
+    // Create the list of options to be rendered.
     let list = this.props.options.map((option, index) => 
-      <h5 className='dropdown__item' key={index} onClick={() => this.select(option)}>
+      <h5 className='dropdown__item' key={index} onClick={() => this.makeSelection(option)}>
         {option}
       </h5>
     );
@@ -42,6 +49,7 @@ class Dropdown extends Component {
         </div>
         <div className='dropdown__list' style={toggleStyle}>
           {list}
+          {/* Added option to clear filter */}
           <h5 className='dropdown__item' onClick={() => this.select('')}>
             Clear Filter
           </h5>

@@ -5,8 +5,6 @@ import Filter from './components/filter';
 import './css/app.scss';
 import vader from './assets/vader-icon.svg';
 
-// Assumes that user will input a search string.
-// If no string provided, API returns 10 characters if search is clicked
 const baseURL = 'https://swapi.co/api/people/?search=';
 
 class App extends Component {
@@ -24,16 +22,21 @@ class App extends Component {
   // API queried once the search button has been clicked.
   // Creates filtered sets as part of this step to provide fast filtering.
   getResults = () => {
-    fetch(baseURL + this.state.query)
-      .then(res => res.json())
-      .then(data => {
-        let all = data.results;
-        let male = all.filter(character => character.gender === 'male')
-        let female = all.filter(character => character.gender === 'female')
-        let none = all.filter(character => character.gender === 'n/a')
-        let characters = {all: all, male: male, female: female, none: none};
-        this.setState({characters: characters, filteredCharacters: all});
-      });
+    if (this.state.query === '') {
+      window.alert('Please enter a search query');
+    } else {
+      fetch(baseURL + this.state.query)
+        .then(res => res.json())
+        .then(data => {
+          let all = data.results;
+          let male = all.filter(character => character.gender === 'male')
+          let female = all.filter(character => character.gender === 'female')
+          let none = all.filter(character => character.gender === 'n/a')
+          let characters = {all: all, male: male, female: female, none: none};
+          this.setState({characters: characters, filteredCharacters: all});
+        }
+      );
+    }
   }
 
   // store the query string in component state

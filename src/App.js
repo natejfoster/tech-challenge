@@ -23,7 +23,7 @@ class App extends Component {
   // Creates filtered sets as part of this step to provide fast filtering.
   getResults = () => {
     if (this.state.query === '') {
-      window.alert('Please enter a search query');
+      window.alert('Please enter a value to search for');
     } else {
       fetch(baseURL + this.state.query)
         .then(res => res.json())

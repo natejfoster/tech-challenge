@@ -50,7 +50,7 @@ class Dropdown extends Component {
         <div className='dropdown__list' style={toggleStyle}>
           {list}
           {/* Added option to clear filter */}
-          <h5 className='dropdown__item' onClick={() => this.select('')}>
+          <h5 className='dropdown__item' onClick={() => this.makeSelection('')}>
             Clear Filter
           </h5>
         </div>
